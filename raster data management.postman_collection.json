@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "raster data management",
+		"_postman_id": "d7792f5d-4424-0393-f5ef-20c9e5a08c7a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert Shard",
+			"request": {
+				"url": "http://127.0.0.1:5678/shard/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dataset_id\" : \"T0S0P0\",\n\t\"folder_name\" : \"/home/s2\",\n\t\"from_time\" : \"20220101\",\n\t\"to_time\" : \"20231231T235959\",\n\t\"pool\" : [\"pool3\", \"pool4\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Dataset Shards",
+			"request": {
+				"url": "http://127.0.0.1:5678/shard/T1S1P1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Catalog",
+			"request": {
+				"url": "http://127.0.0.1:5678/dataset/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Dataset To Catalog",
+			"request": {
+				"url": "http://127.0.0.1:5678/dataset/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : \"T0S0P0\",\n\t\"name\" : \"Sample dataset\",\n\t\"metadata\" : {\n\t\t\"region\" : \"India\"\n\t},\n\t\"source_location\" : [\"/s1\", \"/s2\"],\n\t\"temporal_frequency\" : \"hourly\",\n\t\"projections\" : [\"EPSG:4326\"],\n\t\"paused\" : false,\n\t\"extension\" : \".tif\",\n\t\"resampling\" : \"average\",\n\t\"compression\" : \"deflate\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
